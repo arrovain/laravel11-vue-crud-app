@@ -17,7 +17,13 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        //
+        try {
+            return response()->json($this->employee->all(), 200);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Internal Server Error'], 500);
+        }
+     
+    
     }
 
     /**
